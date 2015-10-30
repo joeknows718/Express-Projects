@@ -1,0 +1,16 @@
+{
+  "name": "TrapChat",
+  "version": "1.0.0",
+  "description": "A real time chat using node express and socketIO",
+  "main": "app.js",
+  "scripts": {
+    "start": "supervisor  ./bin/www"
+  },
+  "author": "JoeC718",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.3",
+    "hbs": "^3.1.1",
+    "socket.io": "^1.3.7"
+  }
+}
