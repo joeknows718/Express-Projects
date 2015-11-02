@@ -4,7 +4,7 @@
   "description": "A real time chat using node express and socketIO",
   "main": "app.js",
   "scripts": {
-    "start": "supervisor  ./bin/www"
+    "start": "node  ./bin/www"
   },
   "author": "JoeC718",
   "license": "ISC",
