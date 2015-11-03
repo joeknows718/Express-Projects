@@ -5,27 +5,19 @@ var hbs = require('hbs')
 
 var blogEngine = require('./blog');
 
-app.use(express.static('static'));
+var routes = require('./routes/routes')
+
 
 app.set('view engine', 'html');
-app.engine('html', hbs.__express);
-app.use(express.bodyParser());
+app.engine('html', require('hbs').__express);
 
+app.use(express.static('static'));
 
 //Routes!!!!!!
 
-app.get('/', function(req, res){
-	res.render('index', {title: "My Blog", entries : entries.blogEngine.getBlogEntries()});
-});
+app.get('/', routes.index );
 
-app.get('/about', function(req, res){
-	res.render('about', {title : 'About Me'});
-});
-
-app.get('/article/:id', function(req, res){
-	var entry = blogEngine.getBlogEntry(req.params.id);
-	res.render('article', {title : entry.title, blog:entry});
-});
+app.get('/article/:id', routes.article );
 
 app.listen(3000);
 
