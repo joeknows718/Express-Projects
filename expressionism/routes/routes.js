@@ -1,20 +1,24 @@
+var express = require('express');
 var blogEngine = require('../blog');
 var nodemailer =  require('nodemailer');
 
-exports.index = function(req, res){
-	res.render('index', {title: "My Blog", entries : blogEngine.getBlogEntries()});
-};
 
-exports.article = function(req, res){
+var routes = express.Router();
+
+routes.get('/', function(req, res){
+	res.render('index', {title: "My Blog", entries : blogEngine.getBlogEntries()});
+});
+
+routes.get('/article/:id', function(req, res){
 	var entry = blogEngine.getBlogEntry(req.params.id);
 	res.render('article', {title : entry.title, blog:entry});
-};
+});
 
-exports.contact = function(req, res){
+routes.get('/contact',function(req, res){
 	res.render('contact', {title: 'Contact Us', page : "contact"});
-};
+});
 
-exports.contactPost = function(req, res){
+routes.post('/contact', function(req, res){
 	var mailOpts;
 	var smtpTrans;
 
@@ -60,4 +64,7 @@ exports.contactPost = function(req, res){
 		}
 	});
 
-};
+});
+
+
+module.exports = routes;

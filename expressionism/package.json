@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "body-parser": "^1.14.1",
-    "express": "3.x",
+    "express": "^4.13.3",
     "hbs": "*",
     "nodemailer": "^0.7.1"
   },

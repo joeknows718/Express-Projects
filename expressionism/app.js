@@ -19,13 +19,21 @@ app.use(bodyParser.urlencoded({
 }));
 
 //Load Routes!!!!!!
-app.get('/', routes.index );
-app.get('/article/:id', routes.article );
-app.get('/contact', routes.contact );
-app.post('/contact', routes.contactPost);
+app.use('/', routes);
 
+app.use(function(req, res, next){
+	res.status(404);
+	res.render('404', {title:'Whut?'})
+})
+
+app.use(function(err, req, res, next){
+	console.error(err.stack);
+	res.status(500);
+	res.render('500', {title:'You broke the site!'});
+});
 //lisen for requests to server 
 app.listen(3000);
 
 
 
+module.exports = app;
