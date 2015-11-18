@@ -1,12 +1,26 @@
 <html>
 <head>
 	<title>TrapChat</title>
-	<link rel="stylesheet" type="text/css" href="static/css/style.css">
-	<script type="text/javascript" src="static/js/chat.js"></script>
-	<script type="text/javascript" src="/socket.io/"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="/js/chat.js"></script>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
 </head>
-<body id="content" class="controls">
-	<input class="field" style="width: 350px;">
-	<input class="send" type="button", value="send">
+<body>
+	<div id="content"></div>
+	<div class="controls">
+		<input class="name" id="name" style="width: 350px;" placeholder="your username">
+		<input class="field" id="field" style="width: 350px;" placeholder="your message">
+		<input class="send" id="send" type="button", value="send">
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#field").keyup(function(e){
+				if(e.keyCode == 13){
+					sendMessage();
+				}
+			});
+		})
+	</script>
 </body>
 </html>
